@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -9,10 +9,6 @@
   ],
   "engines": {
     "node": ">=10"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/JSiapo/use-pagination.git"
   },
   "homepage": "https://jsiapo.dev/npm/use-pagination",
   "scripts": {
