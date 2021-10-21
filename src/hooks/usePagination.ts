@@ -7,12 +7,14 @@ export const usePagination = ({
   dataLength = 0,
   isLoading = false,
   size = 4,
+  isOffsetZero = false,
 }: {
   itemsPerPage?: number;
   limitName?: string;
   offsetName?: string;
   dataLength: number;
   isLoading?: boolean;
+  isOffsetZero?: boolean;
   size: number;
 }) => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -31,9 +33,9 @@ export const usePagination = ({
       setCurrentPage(1);
     }
     if (pageRange[pageRange.length - 1] > rangeRebuild().pageLength) {
-      setCurrentPage(maxPage - 1);
+      setCurrentPage(maxPage);
     }
-  }, [dataLength]);
+  }, [dataLength, isOffsetZero]);
 
   useEffect(() => {
     setMaxPage(Math.ceil(dataLength / itemsPerPage));
@@ -44,11 +46,14 @@ export const usePagination = ({
     if (isLoading) return;
     const queryURL = new URLSearchParams();
     queryURL.append(limitName, `${itemsPerPage}`);
-    queryURL.append(offsetName, `${currentPage}`);
+    queryURL.append(
+      offsetName,
+      `${isOffsetZero ? currentPage - 1 : currentPage}`
+    );
     setQuery(queryURL.toString());
     setMaxPage(Math.ceil(dataLength / itemsPerPage));
     rangeRebuild();
-  }, [itemsPerPage, currentPage]);
+  }, [itemsPerPage, currentPage, isOffsetZero]);
 
   const nextPage = () => {
     if (isLoading) return;
@@ -72,6 +77,10 @@ export const usePagination = ({
     if (isLoading) return;
     setCurrentPage(newPage);
   };
+
+  const getLastPage = (): number => Math.ceil(dataLength / itemsPerPage);
+
+  const isLastPage = () => currentPage >= Math.ceil(dataLength / itemsPerPage);
 
   const rangeRebuild = () => {
     const numberOfPages = Math.ceil(dataLength / itemsPerPage);
@@ -99,5 +108,7 @@ export const usePagination = ({
     jumpToPage,
     jumpToFirstPage,
     jumpToLastPage,
+    getLastPage,
+    isLastPage,
   };
 };
