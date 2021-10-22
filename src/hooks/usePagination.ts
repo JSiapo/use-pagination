@@ -78,10 +78,6 @@ export const usePagination = ({
     setCurrentPage(newPage);
   };
 
-  const getLastPage = (): number => Math.ceil(dataLength / itemsPerPage);
-
-  const isLastPage = () => currentPage >= Math.ceil(dataLength / itemsPerPage);
-
   const rangeRebuild = () => {
     const numberOfPages = Math.ceil(dataLength / itemsPerPage);
     const pageLength = numberOfPages < size ? numberOfPages : size;
@@ -108,7 +104,6 @@ export const usePagination = ({
     jumpToPage,
     jumpToFirstPage,
     jumpToLastPage,
-    getLastPage,
-    isLastPage,
+    lastPage: maxPage,
   };
 };
