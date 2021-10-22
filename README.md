@@ -38,13 +38,12 @@ const Test = () => {
     page,
     query,
     pageRange,
-    getLastPage,
     nextPage,
     previusPage,
     jumpToPage,
     jumpToFirstPage,
     jumpToLastPage,
-    isLastPage,
+    lastPage,
   } = usePagination({
     itemsPerPage: limit,
     dataLength: count, // total from API
@@ -94,9 +93,9 @@ return (
     </Button>
     <Button action={handleSetStartOffsetWithZero}>Start with zero</Button>
     <Details
-      getLastPage={getLastPage}
-      isLastPage={isLastPage}
+      lastPage={lastPage}
       data={data}
+      page={page}
     />
   </>
 
