@@ -23,7 +23,7 @@ export const usePagination = ({
   const [maxPage, setMaxPage] = useState(0);
 
   useEffect(() => {
-    setCurrentPage(isOffsetZero ? 0 : 1);
+    setCurrentPage(1);
     rangeRebuild();
   }, [itemsPerPage]);
 
@@ -33,7 +33,7 @@ export const usePagination = ({
       setCurrentPage(1);
     }
     if (pageRange[pageRange.length - 1] > rangeRebuild().pageLength) {
-      setCurrentPage(maxPage);
+      setCurrentPage(isOffsetZero ? maxPage - 1 : maxPage);
     }
   }, [dataLength, isOffsetZero]);
 
