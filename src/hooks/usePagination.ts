@@ -40,6 +40,9 @@ export const usePagination = ({
     if (pageRange[pageRange.length - 1] > rangeRebuild().pageLength) {
       setCurrentPage(maxPage);
     }
+    if (currentPage > pageRange[pageRange.length - 1]) {
+      setCurrentPage(maxPage);
+    }
   }, [maxPage, isOffsetZero]);
 
   useEffect(() => {
