@@ -32,8 +32,13 @@ export const usePagination = ({
     if (pageRange.length === 0) {
       setCurrentPage(1);
     }
+    if (isOffsetZero) {
+      if (pageRange.length === 1) {
+        setCurrentPage(1);
+      }
+    }
     if (pageRange[pageRange.length - 1] > rangeRebuild().pageLength) {
-      setCurrentPage(isOffsetZero ? maxPage - 1 : maxPage);
+      setCurrentPage(maxPage);
     }
   }, [maxPage, isOffsetZero]);
 
