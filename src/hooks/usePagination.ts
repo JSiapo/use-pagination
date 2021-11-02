@@ -35,7 +35,7 @@ export const usePagination = ({
     if (pageRange[pageRange.length - 1] > rangeRebuild().pageLength) {
       setCurrentPage(isOffsetZero ? maxPage - 1 : maxPage);
     }
-  }, [dataLength, isOffsetZero]);
+  }, [maxPage, isOffsetZero]);
 
   useEffect(() => {
     setMaxPage(Math.ceil(dataLength / itemsPerPage));
