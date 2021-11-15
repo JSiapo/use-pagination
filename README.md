@@ -1,5 +1,7 @@
 # Use Pagination 📖
 
+[![NPM](https://nodei.co/npm/@jsiapo/use-pagination.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/@jsiapo/use-pagination/)
+
 Hook for using **asynchronous calls with custom API 🚧 paging**, which has querys for **paging**
 
 Inspired to use it with [swr](https://swr.vercel.app/es-ES) or [react-query](https://react-query.tanstack.com/), and the api returns the number of total elements
